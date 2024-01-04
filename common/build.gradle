@@ -17,20 +17,22 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'kotlin-android-extensions'
+//apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion rootProject.compileSdkVersion
+    compileSdk rootProject.compileSdkVersion
 
     defaultConfig {
-        versionCode 1
-        versionName "1.0"
 
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
 
         testOptions.unitTests.includeAndroidResources = true
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+    }
+
+    buildFeatures {
+        buildConfig true
     }
 
     buildTypes {
@@ -40,8 +42,12 @@ android {
         }
     }
     compileOptions {
-        targetCompatibility = '1.8'
+        targetCompatibility = JavaVersion.VERSION_17
     }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_17
+    }
+    namespace 'com.example.android.uamp.media'
 
 }
 

@@ -80,7 +80,7 @@ class MediaItemFragment : Fragment() {
                 listAdapter.submitList(list)
             })
         mediaItemFragmentViewModel.networkError.observe(viewLifecycleOwner,
-            Observer { error ->
+            Observer<Boolean> { error ->
                 if (error) {
                     binding.loadingSpinner.visibility = View.GONE
                     binding.networkError.visibility = View.VISIBLE

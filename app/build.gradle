@@ -17,10 +17,10 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'kotlin-android-extensions'
+//apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion rootProject.compileSdkVersion
+    compileSdk rootProject.compileSdkVersion
 
     defaultConfig {
         applicationId "com.example.android.uamp.next"
@@ -32,11 +32,11 @@ android {
         multiDexEnabled true
 
         compileOptions {
-            sourceCompatibility JavaVersion.VERSION_1_8
-            targetCompatibility JavaVersion.VERSION_1_8
+            sourceCompatibility JavaVersion.VERSION_17
+            targetCompatibility JavaVersion.VERSION_17
         }
         kotlinOptions {
-            jvmTarget = "1.8"
+            jvmTarget = JavaVersion.VERSION_17
         }
 
         vectorDrawables {
@@ -45,6 +45,7 @@ android {
     }
 
     buildFeatures {
+        buildConfig true
         viewBinding true
         dataBinding true
     }
@@ -55,6 +56,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    namespace 'com.example.android.uamp'
 }
 
 dependencies {
